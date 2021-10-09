@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//use App\Http\Controllers\Admin\LoginController;
+//use App\Http\Controllers\Admin\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +23,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Admin Routes
-Route::namespace('Admin')->group(function() {
-    Route::get('/login', [App\Http\Controllers\AdminUserController::class, 'showLoginForm'])->name('admin.login');
-    Route::get('/login', [App\Http\Controllers\AdminUserController::class, 'login'])->name('admin.login');
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
+    Route::get('/login', [App\Http\Controllers\Admin\LoginController::class, 'showLoginForm'])->name('admin.login');
+    Route::post('/login', [App\Http\Controllers\Admin\LoginController::class, 'login'])->name('admin.login');
+
+    Route::post('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.login');
 });
