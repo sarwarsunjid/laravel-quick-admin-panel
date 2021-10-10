@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
+use Facade\Ignition\Support\LaravelVersion;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,4 +60,10 @@ class LoginController extends Controller
     {
         return Auth::guard('admin');
     }
+
+    public function logout(Request $request){
+        Auth::guard('admin')->logout();
+        return redirect()->route('admin.login');
+    }
 }
+

@@ -3,8 +3,16 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\Authenticate;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\AuthManager;
+use Illuminate\Auth\Middleware\Authenticate as MiddlewareAuthenticate;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use PharIo\Manifest\Author;
+use phpDocumentor\Reflection\DocBlock\Tags\Author as TagsAuthor;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -36,5 +44,10 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function logout(Request $request){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
