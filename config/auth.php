@@ -97,9 +97,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-    ],
-
-    'passwords' => [
+        
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
@@ -107,6 +105,7 @@ return [
             'throttle' => 60,
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------
