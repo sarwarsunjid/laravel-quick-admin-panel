@@ -1,4 +1,4 @@
-# Laravel Quick Admin Panel with multiauth
+# Laravel Quick Admin Panel 
 
 Multiple auth system means multiple users can log in one application according to roles. Multiple authentications are very important in the large application of laravel. Authentication is the process of recognizing user credentials.
 
